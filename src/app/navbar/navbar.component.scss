@@ -1,0 +1,23 @@
+.navbar-left {
+  display: flex;
+  align-items: center;
+
+  .logo {
+    height: 40px;
+    margin-right: 5px;
+  }
+
+  .title {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+
+  .search-input {
+    margin-right: 10px;
+  }
+}
