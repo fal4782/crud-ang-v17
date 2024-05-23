@@ -1,0 +1,72 @@
+<div class="form-wrapper">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div *ngFor="let control of formJson.controls">
+      <div class="row" [ngClass]="{ 'no-label': !control.label }">
+        <label>{{ control.label }}</label>
+
+        <div class="input">
+          <div [ngSwitch]="control.type">
+            <input
+              *ngSwitchCase="'text'"
+              [formControlName]="control.name"
+              type="text"
+              pInputText
+            />
+            <textarea
+              *ngSwitchCase="'textarea'"
+              [formControlName]="control.name"
+              pInputTextarea
+            ></textarea>
+            <p-checkbox
+              *ngSwitchCase="'checkbox'"
+              [formControlName]="control.name"
+              [binary]="true"
+            ></p-checkbox>
+            <p-slider
+              *ngSwitchCase="'range'"
+              [formControlName]="control.name"
+              [min]="control.options.min"
+              [max]="control.options.max"
+              [step]="control.options.step"
+            ></p-slider>
+            <p-toggleButton
+              *ngSwitchCase="'toggle'"
+              [formControlName]="control.name"
+              >{{ control.label }}</p-toggleButton
+            >
+          </div>
+          <div
+            class="error-message"
+            *ngIf="
+              form.controls[control.name].invalid &&
+              (form.controls[control.name].dirty ||
+                form.controls[control.name].touched)
+            "
+          >
+            <small *ngIf="form.controls[control.name].errors?.['required']"
+              >It is a required field.</small
+            >
+            <small *ngIf="form.controls[control.name].errors?.['minlength']"
+              >Minimum length is
+              {{ control.validators.minLength }} characters.</small
+            >
+            <small *ngIf="form.controls[control.name].errors?.['maxlength']"
+              >Maximum length is
+              {{ control.validators.maxLength }} characters.</small
+            >
+            <small *ngIf="form.controls[control.name].errors?.['email']"
+              >Invalid email format.</small
+            >
+            <small *ngIf="form.controls[control.name].errors?.['pattern']"
+              >Invalid pattern.</small
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button pButton type="submit" [disabled]="form.invalid">Submit</button>
+  </form>
+
+
+  </div>
