@@ -1,0 +1,52 @@
+.form-wrapper {
+  padding: 40px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    &.no-label {
+      display: block;
+      .input {
+        margin-left: 0;
+      }
+    }
+
+    label {
+      flex-shrink: 0;
+      width: 25%;
+    }
+
+    .input {
+      flex: 1;
+    }
+    .input input,
+    .input textarea,
+    .input p-checkbox,
+    .input p-slider,
+    .input p-toggleButton {
+      width: 100%;
+    }
+
+    p-slider {
+      flex: 1;
+      width: 100%;
+    }
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  }
+
+  button {
+    align-self: flex-end;
+    padding: 10px 20px;
+  }
+}
