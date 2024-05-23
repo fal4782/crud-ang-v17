@@ -1,0 +1,13 @@
+[
+    { "id": 1, "name": "Snnehasis", "age": 22, "gender": "Male", "dob": "1993-01-01", "address": "Odisha" },
+    { "id": 2, "name": "Debyans", "age": 22, "gender": "Male", "dob": "1998-05-15", "address": "Odisha" },
+    { "id": 3, "name": "Anjan", "age": 22, "gender": "Male", "dob": "1998-05-15", "address": "vishakhapatnam" },
+    { "id": 4, "name": "Abhisek", "age": 25, "gender": "Male", "dob": "1998-05-15", "address": "Delhi" },
+    { "id": 5, "name": "souvik", "age": 24, "gender": "Male", "dob": "1998-05-15", "address": "kolkata" },
+    { "id": 6, "name": "Archisman", "age": 23, "gender": "Male", "dob": "1998-05-15", "address": "east kolkata" },
+    { "id": 7, "name": "Arjun", "age": 23, "gender": "Male", "dob": "1998-05-15", "address": "madhya pradesh" },
+    { "id": 8, "name": "satya", "age": 24, "gender": "Male", "dob": "1998-05-15", "address": "Rourkela" },
+    { "id": 9, "name": "Rahul", "age": 24, "gender": "Male", "dob": "1998-05-15", "address": "Baripada" }
+    
+  ]
+  
