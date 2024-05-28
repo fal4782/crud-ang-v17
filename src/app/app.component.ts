@@ -26,10 +26,12 @@ export class AppComponent {
   title = 'crud-ang';
   idleService = inject(IdleTimeoutService);
   private idleSubscription?: Subscription;
+  loggedIn:boolean = false
 
   ngOnInit() {
     console.log('in idle function');
 
+    // subscribe to `idleState` observable to get notifs about user's idle state changes
     this.idleSubscription = this.idleService.idleState.subscribe((isIdle) => {
       if (isIdle) {
         console.log('User is idle');
