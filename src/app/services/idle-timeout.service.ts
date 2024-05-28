@@ -12,7 +12,7 @@ export class IdleTimeoutService {
   private timeout = 600; //seconds
   private lastActivity?: Date;
   private idleCheckinInterval = 10; //seconds
-  private idleSubscription?: Subscription;
+  public idleSubscription?: Subscription;
 
   constructor() {
     this.resetTimer();
@@ -24,6 +24,7 @@ export class IdleTimeoutService {
   }
 
   private startWatching() {
+    console.log('start watching');
     this.idleSubscription = interval(this.idleCheckinInterval * 1000)
       .pipe(throttle(() => interval(1000)))
       .subscribe(() => {
@@ -39,11 +40,13 @@ export class IdleTimeoutService {
   }
 
   resetTimer() {
+    console.log('reset timer');
     this.lastActivity = new Date();
     this.idleSubject.next(false);
   }
 
   stopWatching() {
+    console.log('stop watching');
     if (this.idleSubscription) {
       this.idleSubscription.unsubscribe();
     }

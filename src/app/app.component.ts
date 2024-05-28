@@ -28,6 +28,8 @@ export class AppComponent {
   private idleSubscription?: Subscription;
 
   ngOnInit() {
+    console.log('in idle function');
+
     this.idleSubscription = this.idleService.idleState.subscribe((isIdle) => {
       if (isIdle) {
         console.log('User is idle');
@@ -37,15 +39,14 @@ export class AppComponent {
     });
   }
 
-  ngOnDestroy(){
-    if(this.idleSubscription){
-        this.idleSubscription.unsubscribe()
+  ngOnDestroy() {
+    if (this.idleSubscription) {
+      this.idleSubscription.unsubscribe();
     }
   }
 
-  onUserAction(){
-    this.idleService.resetTimer()
+  onUserAction() {
+    console.log('user action performed');
+    this.idleService.resetTimer();
   }
-
-
 }
