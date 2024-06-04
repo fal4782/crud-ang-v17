@@ -5,6 +5,8 @@ import { InputIconModule } from 'primeng/inputicon';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import tableData from '../../assets/table-data.json';
@@ -26,6 +28,7 @@ interface Column {
   selector: 'app-p-table',
   standalone: true,
   imports: [
+    BrowserModule,
     TableModule,
     CommonModule,
     IconFieldModule,
@@ -34,6 +37,7 @@ interface Column {
     MultiSelectModule,
     DropdownModule,
     FormsModule,
+    BrowserAnimationsModule
   ],
   templateUrl: './p-table.component.html',
   styleUrls: ['./p-table.component.scss'],
