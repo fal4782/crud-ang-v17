@@ -10,7 +10,7 @@
       "filter": "agNumberColumnFilter",
       "floatingFilter": true,
       "textAlign": "center",
-      "includeIn.ue": null,
+      "includeInDownload": null,
       "textColor": null,
       "backgroundColor": null
     },
