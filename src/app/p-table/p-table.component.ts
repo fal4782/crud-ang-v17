@@ -7,7 +7,10 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
+
+
 import tableData from '../../assets/table-data.json';
+import { Button } from 'primeng/button';
 
 interface Column {
   field: string;
@@ -34,6 +37,7 @@ interface Column {
     MultiSelectModule,
     DropdownModule,
     FormsModule,
+    Button
   ],
   templateUrl: './p-table.component.html',
   styleUrls: ['./p-table.component.scss'],

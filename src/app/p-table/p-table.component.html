@@ -1,9 +1,21 @@
 <div class="card">
   <p-table
+    #dt
     [columns]="columns"
     [value]="records"
     [tableStyle]="{ 'min-width': '75rem' }"
+    [resizableColumns]="true"
+    [exportHeader]="'customExportHeader'"
   >
+    <ng-template pTemplate="caption">
+      <div style="text-align: left">
+        <p-button
+          icon="pi pi-external-link"
+          label="Export"
+          (click)="dt.exportCSV()"
+        />
+      </div>
+    </ng-template>
     <ng-template pTemplate="header">
       <tr>
         <th
@@ -14,6 +26,7 @@
             color: col.textColor,
             'background-color': col.backgroundColor
           }"
+          pResizableColumn="col.resizable"
         >
           {{ col.header }}
           <p-sortIcon *ngIf="col.sortable" [field]="col.field"></p-sortIcon>

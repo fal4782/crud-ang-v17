@@ -19,7 +19,7 @@
       "displayKey": "field.displayLabel",
       "dataType": "text",
       "width": 300,
-      "sortable": false,
+      "sortable": true,
       "resizable": true,
       "filter": "agTextColumnFilter",
       "floatingFilter": true,
