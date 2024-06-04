@@ -1,100 +1,72 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { IconFieldModule } from 'primeng/iconfield';
-import { InputIconModule } from 'primeng/inputicon';
-import { MultiSelectModule } from 'primeng/multiselect';
-import { DropdownModule } from 'primeng/dropdown';
-import { TableModule } from 'primeng/table';
-import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule } from '@angular/forms';
-import tableData from '../../assets/table-data.json';
-import { Button } from 'primeng/button';
+import { tableData } from './table-config';
 
-interface Column {
-  field: string;
-  header: string;
-  type: string;
-  sortable: boolean;
-  resizable: boolean;
-  filter: string;
-  floatingFilter: boolean;
-  textAlign: string;
-  textColor: string;
-  backgroundColor: string;
-  width: number;
-  includeInDownload: boolean;
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { TableModule } from 'primeng/table';
+import { FormsModule } from '@angular/forms';
+
+export interface Country {
+  name?: string;
+  code?: string;
+}
+
+export interface Representative {
+  name?: string;
+  image?: string;
+}
+
+export interface Customer {
+  id?: number;
+  name?: string;
+  country?: Country;
+  company?: string;
+  date?: string | Date;
+  status?: string;
+  activity?: number;
+  representative?: Representative;
+  verified?: boolean;
+  balance?: number;
 }
 
 @Component({
   selector: 'app-p-table',
   standalone: true,
-  imports: [
-    TableModule,
-    CommonModule,
-    IconFieldModule,
-    InputIconModule,
-    InputTextModule,
-    MultiSelectModule,
-    DropdownModule,
-    FormsModule,
-    Button,
-  ],
+  imports: [ToggleButtonModule, TableModule, FormsModule],
   templateUrl: './p-table.component.html',
   styleUrls: ['./p-table.component.scss'],
 })
 export class PTableComponent implements OnInit {
-  columns: any[] = [];
-  records: any[] = [];
-  globalFilterFields: string[] = [];
+  balanceFrozen = false;
+  statusFrozen = false;
+  customers: Customer[] = [];
 
-  ngOnInit() {
-    this.columns = tableData.headerConfig.map((header) => ({
-      field: header.jsonNode,
-      header: header.displayKey,
-      type: header.dataType,
-      sortable: header.sortable,
-      resizable: header.resizable,
-      filter: header.filter,
-      floatingFilter: header.floatingFilter,
-      textAlign: header.textAlign,
-      textColor: header.textColor,
-      backgroundColor: header.backgroundColor,
-      width: header.width,
-      includeInDownload: header.includeInDownload !== false, //default true
-    }));
-
-    this.records = tableData.records;
-    this.globalFilterFields = this.columns.map((col) => col.field);
+  ngOnInit(): void {
+    this.loadToggleStates();
+    this.getTableData();
   }
 
-  applyGlobalFilter(event: Event) {
-    const inputElement = event.target as HTMLInputElement;
-    const filterValue = inputElement.value;
-    (document.querySelector('p-table') as any).filterGlobal(
-      filterValue,
-      'contains'
+  getTableData(): void {
+    this.customers = tableData;
+  }
+
+  formatCurrency(value: number): string {
+    return value.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    });
+  }
+
+  private loadToggleStates(): void {
+    this.balanceFrozen = JSON.parse(
+      localStorage.getItem('balanceFrozen') || 'false'
+    );
+    this.statusFrozen = JSON.parse(
+      localStorage.getItem('statusFrozen') || 'false'
     );
   }
 
-  getFilterType(filter: string): string {
-    switch (filter) {
-      case 'agNumberColumnFilter':
-        return 'numeric';
-      case 'agTextColumnFilter':
-        return 'text';
-      default:
-        return 'text';
-    }
-  }
-
-  exportCSV(dt: any) {
-    console.log('trying to export');
-    console.log(dt);
-    const columnsToExport = this.columns
-      .filter((col) => col.includeInDownload)
-      .map((col) => col.field);
-    dt.exportCSV({ onlyColumns: columnsToExport });
-    console.log("columns to export: ",columnsToExport);
-    
+  saveToggleStates(): void {
+    localStorage.setItem('balanceFrozen', JSON.stringify(this.balanceFrozen));
+    localStorage.setItem('statusFrozen', JSON.stringify(this.statusFrozen));
   }
 }

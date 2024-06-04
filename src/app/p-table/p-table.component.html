@@ -1,67 +1,69 @@
 <div class="card">
+  <p-toggleButton
+    [(ngModel)]="balanceFrozen"
+    [onIcon]="'pi pi-lock'"
+    offIcon="pi pi-lock-open"
+    [onLabel]="'Balance'"
+    offLabel="Balance"
+    (onChange)="saveToggleStates()"
+  ></p-toggleButton>
+  <p-toggleButton
+    [(ngModel)]="statusFrozen"
+    [onIcon]="'pi pi-lock'"
+    offIcon="pi pi-lock-open"
+    [onLabel]="'Status'"
+    offLabel="Status"
+    (onChange)="saveToggleStates()"
+  ></p-toggleButton>
+
   <p-table
-    #dt
-    [columns]="columns"
-    [value]="records"
-    [tableStyle]="{ 'min-width': '75rem' }"
-    [resizableColumns]="true"
-    [exportHeader]="'customExportHeader'"
+    [value]="customers"
+    [scrollable]="true"
+    scrollHeight="400px"
+    styleClass="mt-3"
   >
-    <ng-template pTemplate="caption">
-      <div style="text-align: left">
-        <p-button
-          icon="pi pi-external-link"
-          label="Export"
-          (click)="exportCSV(dt)"
-        />
-      </div>
-    </ng-template>
     <ng-template pTemplate="header">
       <tr>
+        <th style="min-width: 200px" pFrozenColumn>Name</th>
+        <th style="min-width: 100px">Id</th>
+        <th style="min-width: 200px">Country</th>
+        <th style="min-width: 200px">Date</th>
+        <th style="min-width: 200px">Company</th>
+        <th style="min-width: 200px">Activity</th>
+        <th style="min-width: 200px">Representative</th>
         <th
-          *ngFor="let col of columns"
-          [pSortableColumn]="col.sortable ? col.field : null"
-          [ngStyle]="{
-            'text-align': col.textAlign,
-            color: col.textColor,
-            'background-color': col.backgroundColor,
-            width: col.width ? col.width + 'px' : 'auto'
-          }"
-          pResizableColumn="col.resizable"
-          pFrozenColumn="col.frozenColumn"
+          style="min-width: 200px"
+          alignFrozen="right"
+          pFrozenColumn
+          [frozen]="statusFrozen"
         >
-          {{ col.header }}
-          <p-sortIcon *ngIf="col.sortable" [field]="col.field"></p-sortIcon>
+          Status
         </th>
-      </tr>
-      <tr>
-        <th *ngFor="let col of columns">
-          <p-columnFilter
-            *ngIf="col.filter"
-            [field]="col.field"
-            [type]="getFilterType(col.filter)"
-            [placeholder]="'Search by ' + col.header"
-            [showMenu]="true"
-          >
-          </p-columnFilter>
+        <th
+          style="min-width: 200px"
+          alignFrozen="right"
+          pFrozenColumn
+          [frozen]="balanceFrozen"
+        >
+          Balance
         </th>
       </tr>
     </ng-template>
-
-    <ng-template pTemplate="body" let-rowData>
+    <ng-template pTemplate="body" let-customer>
       <tr>
-        <td
-          *ngFor="let col of columns"
-          [ngStyle]="{ 'text-align': col.textAlign }"
-        >
-          {{ rowData[col.field] }}
+        <td pFrozenColumn>{{ customer.name }}</td>
+        <td style="min-width: 100px">{{ customer.id }}</td>
+        <td>{{ customer.country.name }}</td>
+        <td>{{ customer.date }}</td>
+        <td>{{ customer.company }}</td>
+        <td>{{ customer.activity }}</td>
+        <td>{{ customer.representative.name }}</td>
+        <td alignFrozen="right" pFrozenColumn [frozen]="statusFrozen">
+          {{ customer.status }}
         </td>
-      </tr>
-    </ng-template>
-
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td [attr.colspan]="columns.length">No records found.</td>
+        <td alignFrozen="right" pFrozenColumn [frozen]="balanceFrozen">
+          {{ formatCurrency(customer.balance) }}
+        </td>
       </tr>
     </ng-template>
   </p-table>
