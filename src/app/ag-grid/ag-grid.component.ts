@@ -3,7 +3,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
 import { ColDef, GridOptions } from 'ag-grid-community';
 import { AgGridModule } from 'ag-grid-angular';
-import data from '../ag-grid/data.json';
+import data from '../../assets/table-data.json';
 
 const headerConfig = data.headerConfig;
 const records = data.records;

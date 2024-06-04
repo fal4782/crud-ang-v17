@@ -10,8 +10,7 @@
       "filter": "agNumberColumnFilter",
       "floatingFilter": true,
       "textAlign": "center",
-      "includeInDownload": false,
-      "dynamicValue": null,
+      "includeIn.ue": null,
       "textColor": null,
       "backgroundColor": null
     },
@@ -20,15 +19,15 @@
       "displayKey": "field.displayLabel",
       "dataType": "text",
       "width": 300,
-      "sortable": true,
+      "sortable": false,
       "resizable": true,
       "filter": "agTextColumnFilter",
       "floatingFilter": true,
       "textAlign": "center",
       "includeInDownload": false,
       "dynamicValue": null,
-      "textColor": "white",
-      "backgroundColor": "gray"
+      "textColor": null,
+      "backgroundColor": null
     },
     {
       "jsonNode": "menuDesc",
@@ -42,8 +41,8 @@
       "textAlign": "center",
       "includeInDownload": false,
       "dynamicValue": null,
-      "textColor": "white",
-      "backgroundColor": "#808080"
+      "textColor": null,
+      "backgroundColor": null
     },
     {
       "jsonNode": "status",
