@@ -7,5 +7,5 @@ export const routes: Routes = [
   { path: 'ag-grid', component: AgGridComponent },
   { path: 'form', component: DynamicFormComponent },
   { path: 'p-table', component: PTableComponent },
-  { path: '', redirectTo: '/ag-grid', pathMatch: 'full' }
+  { path: '', redirectTo: '/p-table', pathMatch: 'full' }
 ];
