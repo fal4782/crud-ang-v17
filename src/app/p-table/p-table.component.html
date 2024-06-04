@@ -12,7 +12,7 @@
         <p-button
           icon="pi pi-external-link"
           label="Export"
-          (click)="dt.exportCSV()"
+          (click)="exportCSV(dt)"
         />
       </div>
     </ng-template>
@@ -24,9 +24,11 @@
           [ngStyle]="{
             'text-align': col.textAlign,
             color: col.textColor,
-            'background-color': col.backgroundColor
+            'background-color': col.backgroundColor,
+            width: col.width ? col.width + 'px' : 'auto'
           }"
           pResizableColumn="col.resizable"
+          pFrozenColumn="col.frozenColumn"
         >
           {{ col.header }}
           <p-sortIcon *ngIf="col.sortable" [field]="col.field"></p-sortIcon>

@@ -1,10 +1,11 @@
 {
   "headerConfig": [
     {
+      "id": "srNo",
       "jsonNode": "srNo",
       "displayKey": "field.srNo",
       "dataType": "number",
-      "width": 200,
+      "width": 300,
       "sortable": true,
       "resizable": true,
       "filter": "agNumberColumnFilter",
@@ -15,6 +16,7 @@
       "backgroundColor": null
     },
     {
+      "id": "menuName",
       "jsonNode": "menuName",
       "displayKey": "field.displayLabel",
       "dataType": "text",
@@ -22,14 +24,15 @@
       "sortable": true,
       "resizable": true,
       "filter": "agTextColumnFilter",
-      "floatingFilter": true,
+      "floatingFilter": false,
       "textAlign": "center",
-      "includeInDownload": false,
+      "includeInDownload": true,
       "dynamicValue": null,
       "textColor": null,
       "backgroundColor": null
     },
     {
+      "id": "menuDesc",
       "jsonNode": "menuDesc",
       "displayKey": "field.displayLabel",
       "dataType": "text",
@@ -45,6 +48,7 @@
       "backgroundColor": null
     },
     {
+      "id": "status",
       "jsonNode": "status",
       "displayKey": "field.action",
       "dataType": "text",

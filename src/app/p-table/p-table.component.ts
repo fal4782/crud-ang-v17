@@ -21,6 +21,8 @@ interface Column {
   textAlign: string;
   textColor: string;
   backgroundColor: string;
+  width: number;
+  includeInDownload: boolean;
 }
 
 @Component({
@@ -35,7 +37,7 @@ interface Column {
     MultiSelectModule,
     DropdownModule,
     FormsModule,
-    Button
+    Button,
   ],
   templateUrl: './p-table.component.html',
   styleUrls: ['./p-table.component.scss'],
@@ -57,6 +59,8 @@ export class PTableComponent implements OnInit {
       textAlign: header.textAlign,
       textColor: header.textColor,
       backgroundColor: header.backgroundColor,
+      width: header.width,
+      includeInDownload: header.includeInDownload !== false, //default true
     }));
 
     this.records = tableData.records;
@@ -81,5 +85,16 @@ export class PTableComponent implements OnInit {
       default:
         return 'text';
     }
+  }
+
+  exportCSV(dt: any) {
+    console.log('trying to export');
+    console.log(dt);
+    const columnsToExport = this.columns
+      .filter((col) => col.includeInDownload)
+      .map((col) => col.field);
+    dt.exportCSV({ onlyColumns: columnsToExport });
+    console.log("columns to export: ",columnsToExport);
+    
   }
 }
