@@ -1,69 +1,67 @@
 <div class="card">
-  <p-toggleButton
-    [(ngModel)]="balanceFrozen"
-    [onIcon]="'pi pi-lock'"
-    offIcon="pi pi-lock-open"
-    [onLabel]="'Balance'"
-    offLabel="Balance"
-    (onChange)="saveToggleStates()"
-  ></p-toggleButton>
-  <p-toggleButton
-    [(ngModel)]="statusFrozen"
-    [onIcon]="'pi pi-lock'"
-    offIcon="pi pi-lock-open"
-    [onLabel]="'Status'"
-    offLabel="Status"
-    (onChange)="saveToggleStates()"
-  ></p-toggleButton>
+  <ng-container *ngFor="let col of columns; let i = index">
+    <p-toggleButton
+      *ngIf="col.freezable"
+      [ngModel]="col.frozen"
+      [onIcon]="'pi pi-lock'"
+      offIcon="pi pi-lock-open"
+      [onLabel]="col.header"
+      offLabel="{{ col.header }}"
+      (onChange)="toggleFrozenStates(i)"
+    ></p-toggleButton>
+  </ng-container>
 
   <p-table
-    [value]="customers"
+    [columns]="columns"
+    [value]="records"
     [scrollable]="true"
     scrollHeight="400px"
     styleClass="mt-3"
   >
     <ng-template pTemplate="header">
       <tr>
-        <th style="min-width: 200px" pFrozenColumn>Name</th>
-        <th style="min-width: 100px">Id</th>
-        <th style="min-width: 200px">Country</th>
-        <th style="min-width: 200px">Date</th>
-        <th style="min-width: 200px">Company</th>
-        <th style="min-width: 200px">Activity</th>
-        <th style="min-width: 200px">Representative</th>
         <th
-          style="min-width: 200px"
+          *ngFor="let col of columns"
+          [ngStyle]="{
+            'text-align': col.textAlign,
+            'min-width': '200px',
+            width: col.width ? col.width + 'px' : 'auto'
+          }"
           alignFrozen="right"
           pFrozenColumn
-          [frozen]="statusFrozen"
+          [frozen]="col.frozen"
         >
-          Status
-        </th>
-        <th
-          style="min-width: 200px"
-          alignFrozen="right"
-          pFrozenColumn
-          [frozen]="balanceFrozen"
-        >
-          Balance
+          {{ col.header }}
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-customer>
+
+    <ng-template pTemplate="body" let-rowData>
       <tr>
-        <td pFrozenColumn>{{ customer.name }}</td>
-        <td style="min-width: 100px">{{ customer.id }}</td>
-        <td>{{ customer.country.name }}</td>
-        <td>{{ customer.date }}</td>
-        <td>{{ customer.company }}</td>
-        <td>{{ customer.activity }}</td>
-        <td>{{ customer.representative.name }}</td>
-        <td alignFrozen="right" pFrozenColumn [frozen]="statusFrozen">
-          {{ customer.status }}
+        <td
+          *ngFor="let col of columns"
+          alignFrozen="right"
+          pFrozenColumn
+          [frozen]="col.frozen"
+          [ngStyle]="{ 'text-align': col.textAlign }"
+        >
+          <ng-container
+            *ngIf="col.field !== 'balance' && col.field !== 'country'"
+          >
+            {{ rowData[col.field] }}
+          </ng-container>
+          <ng-container *ngIf="col.field === 'balance'">
+            {{ formatCurrency(rowData[col.field]) }}
+          </ng-container>
+          <ng-container *ngIf="col.field === 'country'">
+            {{ rowData[col.field]?.name }}
+          </ng-container>
         </td>
-        <td alignFrozen="right" pFrozenColumn [frozen]="balanceFrozen">
-          {{ formatCurrency(customer.balance) }}
-        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td [attr.colspan]="columns.length">No records found.</td>
       </tr>
     </ng-template>
   </p-table>
