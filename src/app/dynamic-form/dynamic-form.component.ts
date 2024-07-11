@@ -6,6 +6,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { SliderModule } from 'primeng/slider';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
 
 import {
   FormBuilder,
@@ -29,6 +30,7 @@ import {
     SliderModule,
     ToggleButtonModule,
     ButtonModule,
+    TableModule,
   ],
   standalone: true,
 })
@@ -71,7 +73,7 @@ export class DynamicFormComponent implements OnInit {
       }
       //Set intiial value if any
       let controlValue = control.value !== undefined ? control.value : null;
-      
+
       //Handle initial value for checkbox and toggle
       if (
         (control.type === 'checkbox' || control.type === 'toggle') &&
@@ -90,8 +92,6 @@ export class DynamicFormComponent implements OnInit {
     this.form = this.fb.group(controlsConfig);
   }
 
-
-
   onSubmit() {
     if (this.form.valid) {
       console.log('Form data:', this.form.value);
@@ -99,5 +99,4 @@ export class DynamicFormComponent implements OnInit {
       console.log('Form is invalid. Please check the fields.');
     }
   }
-
 }

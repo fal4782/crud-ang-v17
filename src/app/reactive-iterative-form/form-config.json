@@ -1,0 +1,29 @@
+[
+  {
+    "id": "name",
+    "label": "Name",
+    "type": "text",
+    "validators": {
+      "required": true,
+      "maxLength": 10,
+      "minLength": 3,
+      "requiredMessage": "Name is mandatory",
+      "maxLengthMessage": "Only 10 characters allowed",
+      "minLengthMessage": "Minimum 3 characters needed"
+    }
+  },
+  {
+    "id": "dob",
+    "label": "DOB",
+    "type": "date",
+    "validators": {
+      "required": true,
+      "requiredMessage": "DOB is mandatory"
+    }
+  },
+  {
+    "id": "isAdmin",
+    "label": "Admin Perms",
+    "type": "checkbox"
+  }
+]

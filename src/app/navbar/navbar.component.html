@@ -1,8 +1,42 @@
 <p-menubar>
   <ng-template pTemplate="start">
     <div class="navbar-left">
-      <img src="../../assets/logo.png" alt="logo" class="logo" />
-      <span class="title">EMS</span>
+      <div class="icon" routerLink="/">
+        <img src="../../assets/logo.png" alt="logo" class="logo" />
+        <span class="title">POC</span>
+      </div>
+      <div class="left-menu-items">
+        <button
+          pButton
+          type="button"
+          label="AG-Grid"
+          routerLink="/ag-grid"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Dynamic Form"
+          routerLink="/form"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="P-table"
+          routerLink="/p-table"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Dynamic p-table"
+          routerLink="/dynamic-p-table"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Reactive Iterative Form"
+          routerLink="/reactive-iterative-form"
+        ></button>
+      </div>
     </div>
   </ng-template>
   <ng-template pTemplate="end">

@@ -1,0 +1,14 @@
+[
+  {
+    "actionId": 30,
+    "actionName": "ADDITION"
+  },
+  {
+    "actionId": 20,
+    "actionName": "EDITION"
+  },
+  {
+    "actionId": 10,
+    "actionName": "DELETION"
+  }
+]

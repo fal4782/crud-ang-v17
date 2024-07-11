@@ -1,0 +1,29 @@
+<div class="grid-wrapper">
+  <p-table
+    [value]="permissions"
+    [paginator]="true"
+    [rows]="5"
+    [rowsPerPageOptions]="[5, 10, 20]"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Permissions</th>
+        <th *ngFor="let action of actions">{{ action }}</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-permission>
+      <tr>
+        <td>{{ permission.label }}</td>
+        <td *ngFor="let action of actions">
+          <p-checkbox
+            [binary]="true"
+            [(ngModel)]="permission.actions[action]"
+            (onChange)="
+              updatePermissions(permission, action, permission.actions[action])
+            "
+          ></p-checkbox>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

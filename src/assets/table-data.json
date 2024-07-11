@@ -1,0 +1,91 @@
+{
+  "headerConfig": [
+    {
+      "id": "srNo",
+      "jsonNode": "srNo",
+      "displayKey": "field.srNo",
+      "dataType": "number",
+      "width": 300,
+      "sortable": true,
+      "resizable": true,
+      "filter": "agNumberColumnFilter",
+      "floatingFilter": true,
+      "textAlign": "center",
+      "includeInDownload": null,
+      "textColor": null,
+      "backgroundColor": null
+    },
+    {
+      "id": "menuName",
+      "jsonNode": "menuName",
+      "displayKey": "field.displayLabel",
+      "dataType": "text",
+      "width": 300,
+      "sortable": true,
+      "resizable": true,
+      "filter": "agTextColumnFilter",
+      "floatingFilter": false,
+      "textAlign": "center",
+      "includeInDownload": true,
+      "dynamicValue": null,
+      "textColor": null,
+      "backgroundColor": null
+    },
+    {
+      "id": "menuDesc",
+      "jsonNode": "menuDesc",
+      "displayKey": "field.displayLabel",
+      "dataType": "text",
+      "width": 300,
+      "sortable": true,
+      "resizable": true,
+      "filter": "agTextColumnFilter",
+      "floatingFilter": true,
+      "textAlign": "center",
+      "includeInDownload": false,
+      "dynamicValue": null,
+      "textColor": null,
+      "backgroundColor": null
+    },
+    {
+      "id": "status",
+      "jsonNode": "status",
+      "displayKey": "field.action",
+      "dataType": "text",
+      "width": 350,
+      "sortable": null,
+      "resizable": null,
+      "filter": null,
+      "floatingFilter": false,
+      "textAlign": "center",
+      "includeInDownload": false,
+      "dynamicValue": null,
+      "textColor": null,
+      "backgroundColor": null
+    }
+  ],
+  "records": [
+    {
+      "srNo": 1,
+      "menuName": "View Premium",
+      "menuDesc": "View Premium Invoice History",
+      "menuIcon": "fa fa-home",
+      "isApplicableForDept": true,
+      "status": 10
+    },
+    {
+      "srNo": 2,
+      "menuName": "View Levy",
+      "menuDesc": "View Levy Invoice History",
+      "menuIcon": "fa fa-home",
+      "status": 22
+    },
+    {
+      "srNo": 3,
+      "menuName": "View Liquidity",
+      "menuDesc": "View Liquidity Instruction History",
+      "menuIcon": "fa fa-home",
+      "status": 23
+    }
+  ]
+}
