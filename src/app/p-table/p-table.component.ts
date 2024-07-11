@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './p-table.component.html',
   styleUrls: ['./p-table.component.scss'],
 })
+
 export class PTableComponent implements OnInit {
   balanceFrozen = false;
   statusFrozen = false;

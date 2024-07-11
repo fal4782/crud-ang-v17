@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:crud-ang": "node dist/crud-ang/server/server.mjs"
+    "serve:ssr:crud-ang": "node dist/crud-ang/server/server.mjs",
+    "try": "ts-node /home/falguni/Desktop/crud-ang-v17/src/app/grid/addMenuId.ts"
   },
   "private": true,
   "dependencies": {
@@ -23,10 +24,13 @@
     "@angular/router": "^17.3.0",
     "@angular/ssr": "^17.3.7",
     "ag-grid-angular": "^31.3.2",
+    "arg": "^5.0.2",
     "express": "^4.18.2",
+    "fs": "^0.0.1-security",
     "primeicons": "^7.0.0",
     "primeng": "^17.17.0",
     "rxjs": "~7.8.0",
+    "ts-node": "^10.9.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },

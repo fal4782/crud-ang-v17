@@ -1,0 +1,66 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+
+  ::ng-deep .p-datatable-wrapper {
+    width: 100%;
+
+    table {
+      width: 100%;
+
+      th,
+      td {
+        text-align: center;
+      }
+
+      td {
+        vertical-align: top; // to align fields in case of error
+      }
+      .action-btn {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        color: white;
+
+        button {
+          border-radius: 50%;
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+input[type="text"],
+input[type="number"],
+::ng-deep .p-calendar,
+textarea {
+  width: 100%;
+}
+
+::ng-deep .p-checkbox-box {
+  margin-top: 7px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-left: 2px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: left;
+}
+
+/* Input fields with error */
+.ng-invalid.ng-touched {
+  border-color: red;
+}
