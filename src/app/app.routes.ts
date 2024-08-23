@@ -5,6 +5,8 @@ import { DynamicPTableComponent } from './dynamic-p-table/dynamic-p-table.compon
 import { PTableComponent } from './p-table/p-table.component';
 import { GridComponent } from './grid/grid.component';
 import { ReactiveIterativeFormComponent } from './reactive-iterative-form/reactive-iterative-form.component';
+import { FilterDropdownComponent } from './filter-dropdown/filter-dropdown.component';
+import { ApexChartsComponent} from './apex-charts/apex-charts.component'
 
 export const routes: Routes = [
   { path: 'ag-grid', component: AgGridComponent },
@@ -16,5 +18,13 @@ export const routes: Routes = [
     path: 'reactive-iterative-form',
     component: ReactiveIterativeFormComponent,
   },
-  { path: '', redirectTo: '/reactive-iterative-form', pathMatch: 'full' },
+  {
+    path: 'filter-dropdown',
+    component: FilterDropdownComponent,
+  },
+  {
+    path:'apex-charts',
+    component: ApexChartsComponent,
+  },
+  { path: '', redirectTo: '/apex-charts', pathMatch: 'full' },
 ];
