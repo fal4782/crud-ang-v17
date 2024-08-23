@@ -6,7 +6,8 @@ import { PTableComponent } from './p-table/p-table.component';
 import { GridComponent } from './grid/grid.component';
 import { ReactiveIterativeFormComponent } from './reactive-iterative-form/reactive-iterative-form.component';
 import { FilterDropdownComponent } from './filter-dropdown/filter-dropdown.component';
-import { ApexChartsComponent} from './apex-charts/apex-charts.component'
+import { ApexDrilldownChartComponent } from './apex-drilldown-chart/apex-drilldown-chart.component';
+import { ApexPieBarChartComponent } from './apex-pie-bar-chart/apex-pie-bar-chart.component';
 
 export const routes: Routes = [
   { path: 'ag-grid', component: AgGridComponent },
@@ -23,8 +24,12 @@ export const routes: Routes = [
     component: FilterDropdownComponent,
   },
   {
-    path:'apex-charts',
-    component: ApexChartsComponent,
+    path: 'apex-drilldown-chart',
+    component: ApexDrilldownChartComponent,
   },
-  { path: '', redirectTo: '/apex-charts', pathMatch: 'full' },
+  {
+    path: 'apex-pie-bar-chart',
+    component: ApexPieBarChartComponent,
+  },
+  { path: '', redirectTo: '/apex-pie-bar-chart', pathMatch: 'full' },
 ];

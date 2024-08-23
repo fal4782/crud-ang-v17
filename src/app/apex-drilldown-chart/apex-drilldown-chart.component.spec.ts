@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ApexChartsComponent } from './apex-charts.component';
+import { ApexDrilldownChartComponent } from './apex-drilldown-chart.component';
 
 describe('ApexChartsComponent', () => {
-  let component: ApexChartsComponent;
-  let fixture: ComponentFixture<ApexChartsComponent>;
+  let component: ApexDrilldownChartComponent;
+  let fixture: ComponentFixture<ApexDrilldownChartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ApexChartsComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(ApexChartsComponent);
+      imports: [ApexDrilldownChartComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(ApexDrilldownChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,22 @@
+<div id="chart" *ngIf="chartOptions?.series?.length">
+    <div class="breadcrumb-container">
+      <ng-container *ngIf="isDrilldown; else showBreadcrumb">
+        <a href="#" (click)="goToTeams()">{{ originalSeries.label }}</a>
+        <span> / </span>
+        <span>{{ currentDrilldownLabel }}</span>
+      </ng-container>
+      <ng-template #showBreadcrumb>
+        <span class="hidden">Hidden Text</span>
+      </ng-template>
+    </div>
+  
+    <apx-chart
+      #chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [labels]="chartOptions.labels"
+      [responsive]="chartOptions.responsive"
+      [theme]="chartOptions.theme"
+      [title]="chartOptions.title"
+    ></apx-chart>
+  </div>

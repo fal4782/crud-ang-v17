@@ -1,0 +1,11 @@
+.chart-container {
+  display: flex;
+  gap: 20px;
+}
+
+.pie-chart {
+  flex: 1;
+}
+.bar-chart {
+  flex: 2;
+}

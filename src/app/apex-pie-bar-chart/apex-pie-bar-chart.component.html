@@ -1,0 +1,24 @@
+<div class="chart-container">
+    <div class="pie-chart" *ngIf="pieChartOptions?.series?.length">
+      <apx-chart
+        #pieChart
+        [series]="pieChartOptions.series"
+        [chart]="pieChartOptions.chart"
+        [labels]="pieChartOptions.labels"
+        [responsive]="pieChartOptions.responsive"
+        [theme]="pieChartOptions.theme"
+        [title]="pieChartOptions.title"
+      ></apx-chart>
+    </div>
+    <div class="bar-chart" *ngIf="barChartOptions?.series?.length">
+      <apx-chart
+        #barChart
+        [series]="barChartOptions.series"
+        [chart]="barChartOptions.chart"
+        [dataLabels]="barChartOptions.dataLabels"
+        [plotOptions]="barChartOptions.plotOptions"
+        [xaxis]="barChartOptions.xaxis"
+      ></apx-chart>
+    </div>
+  </div>
+  
